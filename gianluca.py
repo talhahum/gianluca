@@ -1,44 +1,39 @@
-def sort_data():
-    f = open("data")
+from math import sqrt
+
+
+def get_data_from_file(file_name):
+    f = open(file_name)
     lines = f.readlines()
     f.close()
-    int_data = [int(i) for i in lines]
+    return lines
+
+
+def convert_dato_to_int(data):
+    int_data = [int(i) for i in data]
+    return int_data
+
+
+def sort_data(int_data):
     list.sort(int_data)
     return int_data
 
 
-def min():
-    f = open("data")
-    lines = f.readlines()
-    f.close()
-    int_data = [int(i) for i in lines]
-    list.sort(int_data)
-    return int_data[0]
+def min_sorted_list(data):
+    return data[0]
 
 
-def max():
-    f = open("data")
-    lines = f.readlines()
-    f.close()
-    int_data = [int(i) for i in lines]
-    list.sort(int_data)
-    return int_data[-1]
+def max_sorted_list(data):
+    return data[-1]
 
 
-def standard_dev():
-    f = open("data")
-    lines = f.readlines()
-    f.close()
-    int_data = [int(i) for i in lines]
-    list.sort(int_data)
-    length = len(int_data)
-    average = sum(int_data) / length
-    from math import sqrt
-    std_dev = [(i - average)**2 for i in int_data]
+def standard_dev(data):
+    length = len(data)
+    average = sum(data) / length
+    std_dev = [(i - average)**2 for i in data]
     average_sd = sum(std_dev) / length
     return sqrt(average_sd)
 
 
-print(min())
-print(max())
-print(standard_dev())
+data = get_data_from_file("data")
+int_data = convert_dato_to_int(data)
+sorted_int_data = sort_data(int_data)
