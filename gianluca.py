@@ -30,7 +30,7 @@ def standard_dev(int_data):
     length = len(int_data)
     average = sum(int_data) / length
     std_dev = [(i - average)**2 for i in int_data]
-    average_sd = sum(std_dev) / length
+    average_sd = sum(std_dev) / (length - 1)
     return sqrt(average_sd)
 
 
